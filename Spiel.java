@@ -95,7 +95,7 @@ public class Spiel extends javax.swing.JFrame
             {
                 case "white":
                 w_Pawn.add( new JLabel() );
-                w_Pawn.get(i).setIcon(new javax.swing.ImageIcon(getClass().getResource("/Chess/sprites/Weiß/Peon.png")));
+                w_Pawn.get(i).setIcon(new javax.swing.ImageIcon(getClass().getResource("/P2_Chess/sprites/Weiß/Peon.png")));
                 w_Pawn.get(i).setLocation(PosX.get(2), PosY.get(i+1));
                 w_Pawn.get(i).setSize(new java.awt.Dimension(71,71));
                 w_Pawn.get(i).setVisible(true);
@@ -116,7 +116,7 @@ public class Spiel extends javax.swing.JFrame
                     
                 case "black":
                 b_Pawn.add( new JLabel() );
-                b_Pawn.get(i).setIcon(new javax.swing.ImageIcon(getClass().getResource("/Chess/sprites/Schwarz/Peon.png")));
+                b_Pawn.get(i).setIcon(new javax.swing.ImageIcon(getClass().getResource("/P2_Chess/sprites/Schwarz/Peon.png")));
                 b_Pawn.get(i).setLocation(PosX.get(7), PosY.get(i+1));
                 b_Pawn.get(i).setSize(new java.awt.Dimension(71,71));
                 b_Pawn.get(i).setVisible(true);
@@ -148,7 +148,7 @@ public class Spiel extends javax.swing.JFrame
             {
                 case "white":
                 w_Tower.add(new JLabel());
-                w_Tower.get(i).setIcon(new javax.swing.ImageIcon(getClass().getResource("/Chess/sprites/Weiß/tower.png")));
+                w_Tower.get(i).setIcon(new javax.swing.ImageIcon(getClass().getResource("/P2_Chess/sprites/Weiß/tower.png")));
                 w_Tower.get(i).setVisible(true);
                 w_Tower.get(i).setSize(new java.awt.Dimension(71,71));
 
@@ -175,7 +175,7 @@ public class Spiel extends javax.swing.JFrame
                     
                 case "black":
                 b_Tower.add(new JLabel());
-                b_Tower.get(i).setIcon(new javax.swing.ImageIcon(getClass().getResource("/Chess/sprites/Schwarz/tower.png")));
+                b_Tower.get(i).setIcon(new javax.swing.ImageIcon(getClass().getResource("/P2_Chess/sprites/Schwarz/tower.png")));
                 b_Tower.get(i).setVisible(true);
                 b_Tower.get(i).setSize(new java.awt.Dimension(71,71));
 
@@ -213,7 +213,7 @@ public class Spiel extends javax.swing.JFrame
             {
                 case "white":
                 w_Knight.add(new JLabel());
-                w_Knight.get(j).setIcon(new javax.swing.ImageIcon(getClass().getResource("/Chess/sprites/Weiß/movieBob.png")));
+                w_Knight.get(j).setIcon(new javax.swing.ImageIcon(getClass().getResource("/P2_Chess/sprites/Weiß/movieBob.png")));
                 w_Knight.get(j).setVisible(true);
                 w_Knight.get(j).setSize(new java.awt.Dimension(71,71));
 
@@ -239,7 +239,7 @@ public class Spiel extends javax.swing.JFrame
                     break;
                 case "black":
                 b_Knight.add(new JLabel());
-                b_Knight.get(j).setIcon(new javax.swing.ImageIcon(getClass().getResource("/Chess/sprites/Schwarz/movieBob.png")));
+                b_Knight.get(j).setIcon(new javax.swing.ImageIcon(getClass().getResource("/P2_Chess/sprites/Schwarz/movieBob.png")));
                 b_Knight.get(j).setVisible(true);
                 b_Knight.get(j).setSize(new java.awt.Dimension(71,71));
 
@@ -275,7 +275,7 @@ public class Spiel extends javax.swing.JFrame
             {
                 case "white":
                 w_Bishop.add(new JLabel());
-                w_Bishop.get(j).setIcon(new javax.swing.ImageIcon(getClass().getResource("/Chess/sprites/Weiß/bishop.png")));
+                w_Bishop.get(j).setIcon(new javax.swing.ImageIcon(getClass().getResource("/P2_Chess/sprites/Weiß/bishop.png")));
                 w_Bishop.get(j).setVisible(true);
                 w_Bishop.get(j).setSize(new java.awt.Dimension(71,71));
 
@@ -301,7 +301,7 @@ public class Spiel extends javax.swing.JFrame
                 break;
                 case "black":
                 b_Bishop.add(new JLabel());
-                b_Bishop.get(j).setIcon(new javax.swing.ImageIcon(getClass().getResource("/Chess/sprites/Schwarz/bishop.png")));
+                b_Bishop.get(j).setIcon(new javax.swing.ImageIcon(getClass().getResource("/P2_Chess/sprites/Schwarz/bishop.png")));
                 b_Bishop.get(j).setVisible(true);
                 b_Bishop.get(j).setSize(new java.awt.Dimension(71,71));
 
@@ -343,12 +343,12 @@ public class Spiel extends javax.swing.JFrame
                 switch (i)
                 {
                     case 0:
-                        w_Royalty.get(i).setIcon(new javax.swing.ImageIcon(getClass().getResource("/Chess/sprites/Weiß/Königin.png")));
+                        w_Royalty.get(i).setIcon(new javax.swing.ImageIcon(getClass().getResource("/P2_Chess/sprites/Weiß/Königin.png")));
                         w_Royalty.get(i).setLocation(PosX.get(1), PosY.get(5));
                         w_Royalty.get(i).setToolTipText(1+":"+(5));
                         break;
                     case 1:
-                        w_Royalty.get(i).setIcon(new javax.swing.ImageIcon(getClass().getResource("/Chess/sprites/Weiß/König.png")));
+                        w_Royalty.get(i).setIcon(new javax.swing.ImageIcon(getClass().getResource("/P2_Chess/sprites/Weiß/König.png")));
                         w_Royalty.get(i).setLocation(PosX.get(1), PosY.get(4));
                         w_Royalty.get(i).setToolTipText(1+":"+(4));      
                 }
@@ -370,12 +370,12 @@ public class Spiel extends javax.swing.JFrame
                     switch (i)
                     {
                         case 0:
-                            b_Royalty.get(i).setIcon(new javax.swing.ImageIcon(getClass().getResource("/Chess/sprites/Schwarz/Königin.png")));
+                            b_Royalty.get(i).setIcon(new javax.swing.ImageIcon(getClass().getResource("/P2_Chess/sprites/Schwarz/Königin.png")));
                             b_Royalty.get(i).setLocation(PosX.get(8), PosY.get(5));
                             b_Royalty.get(i).setToolTipText(8+":"+(5));
                             break;
                         case 1:
-                            b_Royalty.get(i).setIcon(new javax.swing.ImageIcon(getClass().getResource("/Chess/sprites/Schwarz/König.png")));
+                            b_Royalty.get(i).setIcon(new javax.swing.ImageIcon(getClass().getResource("/P2_Chess/sprites/Schwarz/König.png")));
                             b_Royalty.get(i).setLocation(PosX.get(8), PosY.get(4));
                             b_Royalty.get(i).setToolTipText(8+":"+(4));      
                     }
@@ -464,7 +464,7 @@ public class Spiel extends javax.swing.JFrame
         
         if( findLabel(x,y) == null  ||  !currentTurn.equals(searchArrayLists(findLabel(x,y))) )
         {
-            JLabel valid = new JLabel(new ImageIcon("/Chess/sprites/glow.png"));
+            JLabel valid = new JLabel(new ImageIcon("/P2_Chess/sprites/glow.png"));
             valid.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Chess/sprites/glow.png")));
             valid.setLocation(PosX.get(x), PosY.get(y));
             valid.setSize(new java.awt.Dimension(71,71));
