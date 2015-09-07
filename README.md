@@ -9,3 +9,6 @@ Current Mission Objectives:
 - ...
 - make more dank memes
 
+
+Mission Parameters:
+- dONT upload anything in the master god dam just branch the damn thing 
