@@ -6,6 +6,7 @@
 package P2_Chess;
 
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JDialog;
 
@@ -14,55 +15,35 @@ import javax.swing.JDialog;
  * @author Roberto
  */
 public class Login extends javax.swing.JFrame {
-    NewPlayer np = new NewPlayer();
-    ArrayList<Jugador> users = np.getUsers();
-    static ArrayList<Jugador> player = new ArrayList<>();
-    // Funciones
+    
+    public String u, p;
+    public Jugador login;
+    
     public Login() {
         initComponents();
     }
        
-    public Jugador search(String n, String p){
-        for(Jugador player : users){
-            if(player.getNombre().equals(n)&&player.getPassword().equals(p))
-                return player;          
-        }
-        return null;
-    }
-        
-    public ArrayList<Jugador> getLogin(){
-        return player;
-    }
     
-    public void loginPlayer(){
-        String n = txtuser.getText();
-      String p = txtpassword.getText();
+
            
-      if(users.contains(search(n, p))){
-          player.add(new Jugador(n, p));
-          new MainMenu().setVisible(true);
-          this.dispose();
-      }
-    }
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
+        jTextField1 = new javax.swing.JTextField();
         txtuser = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         btnlogin = new javax.swing.JButton();
         btnback = new javax.swing.JButton();
         txtpassword = new javax.swing.JPasswordField();
 
+        jTextField1.setText("jTextField1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         txtuser.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtuser.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        txtuser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtuserActionPerformed(evt);
             }
         });
@@ -71,27 +52,21 @@ public class Login extends javax.swing.JFrame {
         jLabel1.setText("Login");
 
         btnlogin.setText("Login");
-        btnlogin.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnlogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnloginActionPerformed(evt);
             }
         });
 
         btnback.setText("Back");
-        btnback.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnbackActionPerformed(evt);
             }
         });
 
-        txtpassword.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        txtpassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtpasswordKeyPressed(evt);
             }
         });
@@ -146,12 +121,25 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_btnbackActionPerformed
 
     private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
-      loginPlayer();      
+        
+        u = txtuser.getText();
+        p = txtpassword.getText();
+        
+        try{
+            
+            if(Data.login(u, p)){
+                new MainMenu().setVisible(true);
+                this.dispose();
+            }
+                    
+        }catch(IOException e){
+            System.out.println(e.getMessage());
+        }
+               
     }//GEN-LAST:event_btnloginActionPerformed
 
     private void txtpasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpasswordKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-               loginPlayer();
         }
     }//GEN-LAST:event_txtpasswordKeyPressed
     /**
@@ -192,6 +180,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton btnback;
     private javax.swing.JButton btnlogin;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JPasswordField txtpassword;
     private javax.swing.JTextField txtuser;
     // End of variables declaration//GEN-END:variables

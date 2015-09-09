@@ -12,8 +12,7 @@ import java.util.ArrayList;
  * @author Roberto
  */
 public class MiPerfil extends javax.swing.JFrame {
-    Login lg = new Login();
-    ArrayList<Jugador> jugador = lg.getLogin();
+
     
     //Funciones
     public MiPerfil() {
@@ -28,8 +27,7 @@ public class MiPerfil extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         datos = new javax.swing.JFrame();
         jLabel1 = new javax.swing.JLabel();
@@ -64,46 +62,36 @@ public class MiPerfil extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnDatos.setText("Datos");
-        btnDatos.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDatosActionPerformed(evt);
             }
         });
 
         btnUltimosJuegos.setText("Ultimos Juegos");
-        btnUltimosJuegos.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnUltimosJuegos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUltimosJuegosActionPerformed(evt);
             }
         });
 
         btncambiarpassword.setText("Cambiar Password");
-        btncambiarpassword.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btncambiarpassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btncambiarpasswordActionPerformed(evt);
             }
         });
 
         jButton1.setText("Facebook");
-        jButton1.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
         jButton2.setText("Back");
-        jButton2.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
