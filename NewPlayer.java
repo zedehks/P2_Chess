@@ -6,7 +6,8 @@
 package P2_Chess;
 
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 /**
  *
@@ -14,38 +15,23 @@ import java.util.ArrayList;
  */
 public class NewPlayer extends javax.swing.JFrame {
    
-    static ArrayList<Jugador> users = new ArrayList<>();
-      
+    public String u, p;    
+    public Jugador newPlayer;
+   // Data.createSaveFile(); 
     
-    public NewPlayer() {
-        initComponents();
+    public NewPlayer(){
+        initComponents();        
     }
-    
-    public ArrayList<Jugador> getUsers(){
-        return users;
-    }
-    
+               
     public void goToFrame(){
         new Menu().setVisible(true);
         this.dispose();
     }
-    
-    public void createPlayer(){
-        String user = txtnewuser.getText();
-        String password = txtnewpassword.getText();       
         
-        if(txtnewpassword.getText().length() == 5){
-         users.add(new Jugador(user, password));
-         goToFrame();   
-        }
-        else
-             Alert.setVisible(true);  
-    }
    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         Alert = new javax.swing.JDialog();
         jLabel2 = new javax.swing.JLabel();
@@ -64,10 +50,8 @@ public class NewPlayer extends javax.swing.JFrame {
         jLabel2.setText("Contraseña tiene que contener 5 caracteres!");
 
         jButton1.setText("Okay");
-        jButton1.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
@@ -98,28 +82,22 @@ public class NewPlayer extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        txtnewuser.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        txtnewuser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtnewuserActionPerformed(evt);
             }
         });
 
         btnnewplayer.setText("Create");
-        btnnewplayer.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnnewplayer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnnewplayerActionPerformed(evt);
             }
         });
 
         btnback.setText("Back");
-        btnback.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnbackActionPerformed(evt);
             }
         });
@@ -127,17 +105,13 @@ public class NewPlayer extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel1.setText("New Player");
 
-        txtnewpassword.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        txtnewpassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtnewpasswordActionPerformed(evt);
             }
         });
-        txtnewpassword.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        txtnewpassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtnewpasswordKeyPressed(evt);
             }
         });
@@ -188,7 +162,21 @@ public class NewPlayer extends javax.swing.JFrame {
     }//GEN-LAST:event_txtnewuserActionPerformed
 
     private void btnnewplayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnewplayerActionPerformed
-        createPlayer(); 
+       
+        u = txtnewuser.getText();
+        p = txtnewpassword.getText();
+        
+        try{
+            
+           // Data.createSaveFile();            
+            newPlayer = Data.createPlayer(u, p);
+            Data.fileWritter(newPlayer);
+            
+        }catch(IOException e){
+            System.out.println(e.getMessage());
+        }
+        
+        goToFrame();
     }//GEN-LAST:event_btnnewplayerActionPerformed
 
     private void btnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbackActionPerformed
@@ -205,7 +193,7 @@ public class NewPlayer extends javax.swing.JFrame {
 
     private void txtnewpasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnewpasswordKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            createPlayer();
+
         }
     }//GEN-LAST:event_txtnewpasswordKeyPressed
 
@@ -235,8 +223,8 @@ public class NewPlayer extends javax.swing.JFrame {
         //</editor-fold>
         
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new NewPlayer().setVisible(true);
+            public void run(){
+                    new NewPlayer().setVisible(true);                    
             }
         });
     }

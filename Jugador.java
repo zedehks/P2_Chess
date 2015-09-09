@@ -11,19 +11,16 @@ package P2_Chess;
  */
 public class Jugador {
     
-    public String nombre, password;
+    public String usuario, password;
+    public int puntos;
+    public boolean isLoggedIn;
     
-    public Jugador(String nombre, String password){
-        this.nombre=nombre;
+    public Jugador(String usuario, String password){
+        this.usuario=usuario;
         this.password=password;
-    }
-    
-    public String getNombre(){
-        return nombre;
-    }
-    
-    public String getPassword(){
-        return password;                
-    }
+        puntos = 0;
+        isLoggedIn = false;
+        
+    }  
     
 }

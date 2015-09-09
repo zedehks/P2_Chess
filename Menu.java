@@ -5,12 +5,17 @@
  */
 package P2_Chess;
 
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Roberto
  */
 public class Menu extends javax.swing.JFrame {
-
+    
+    
     /**
      * Creates new form Menu
      */
@@ -25,8 +30,7 @@ public class Menu extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         btnlogin = new javax.swing.JButton();
         btncrearjugador = new javax.swing.JButton();
@@ -36,28 +40,22 @@ public class Menu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnlogin.setText("Login");
-        btnlogin.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnlogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnloginActionPerformed(evt);
             }
         });
 
         btncrearjugador.setText("Crear Jugador");
-        btncrearjugador.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btncrearjugador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btncrearjugadorActionPerformed(evt);
             }
         });
 
         btnsalir.setText("Salir");
-        btnsalir.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnsalirActionPerformed(evt);
             }
         });
@@ -111,6 +109,14 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnsalirActionPerformed
 
     private void btncrearjugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncrearjugadorActionPerformed
+
+        try {
+            Data.createFolder();
+            Data.createSaveFile();
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+        
         new NewPlayer().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btncrearjugadorActionPerformed
