@@ -15,11 +15,11 @@ import javax.swing.JLayeredPane;
  *
  * @author waldonavas
  */
-public class Spiel extends javax.swing.JFrame
+public class Deprecated_Spiel extends javax.swing.JFrame
 {
 
     /**
-     * Creates new form Spiel
+     * Creates new form Deprecated_Spiel
      */
     
     static ArrayList<ArrayList> wPieces;
@@ -41,7 +41,7 @@ public class Spiel extends javax.swing.JFrame
     static boolean isMoving = false;
     static JLabel selectedPiece;
     
-    public Spiel()
+    public Deprecated_Spiel()
     {
         initComponents();
          
@@ -543,7 +543,7 @@ public class Spiel extends javax.swing.JFrame
 
     private void TableroMousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_TableroMousePressed
     {//GEN-HEADEREND:event_TableroMousePressed
-        for (int i = 0; i < (layers.getComponentsInLayer(JLayeredPane.DRAG_LAYER)).length; i++)
+        for (int i = 0; i < (layers.getComponentCountInLayer(JLayeredPane.DRAG_LAYER)); i++)
         {
             if((layers.getComponentsInLayer(JLayeredPane.DRAG_LAYER))[i].equals(selectedPiece))
             {
@@ -617,17 +617,18 @@ public class Spiel extends javax.swing.JFrame
             }
         } catch (ClassNotFoundException ex)
         {
-            java.util.logging.Logger.getLogger(Spiel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Deprecated_Spiel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex)
         {
-            java.util.logging.Logger.getLogger(Spiel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Deprecated_Spiel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex)
         {
-            java.util.logging.Logger.getLogger(Spiel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Deprecated_Spiel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex)
         {
-            java.util.logging.Logger.getLogger(Spiel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Deprecated_Spiel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
@@ -635,7 +636,7 @@ public class Spiel extends javax.swing.JFrame
         {
             public void run()
             {
-                new Spiel().setVisible(true);
+                new Deprecated_Spiel().setVisible(true);
             }
         });
         

@@ -161,7 +161,7 @@ public class MainMenu extends javax.swing.JFrame {
     {//GEN-HEADEREND:event_btnjugarMouseClicked
         
         this.setVisible(false);
-        Spiel juego = new Spiel();
+        Ajedrez juego = new Ajedrez();
         juego.setVisible(true);
         
     }//GEN-LAST:event_btnjugarMouseClicked

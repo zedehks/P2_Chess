@@ -4,22 +4,26 @@
  * and open the template in the editor.
  */
 package P2_Chess;
- 
+
 import javax.swing.ImageIcon;
 
-public class Peon extends Ficha
+/**
+ *
+ * @author waldonavas
+ */
+public class Reina extends Ficha
 {
-    public Peon(char colour, int x, int y)
+    public Reina(char colour, int x, int y)
     {
         super();
         this.colour = colour;
         switch(colour)
         {
             case 'w':
-                this.setIcon(new ImageIcon(getClass().getResource("/P2_Chess/sprites/Weiß/Peon.png")));
+                this.setIcon(new ImageIcon(getClass().getResource("/P2_Chess/sprites/Weiß/Königin.png")));
                 break;
             case 'b':
-                this.setIcon(new ImageIcon(getClass().getResource("/P2_Chess/sprites/Schwarz/Peon.png")));
+                this.setIcon(new ImageIcon(getClass().getResource("/P2_Chess/sprites/Schwarz/Königin.png")));
         }
         
         this.x = x;
@@ -37,39 +41,24 @@ public class Peon extends Ficha
         
     }
 
-
-
     @Override
-    public void eat(Ficha f)
+    void eat(Ficha f)
     {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void getEaten()
+    void getEaten()
     {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void showAvailableMoves()
+    void showAvailableMoves()
     {
         super.showAvailableMoves();
         
-        switch(colour)
-        {
-            case 'w':
-                if(x < 8)
-                    Tablero.spawnValidMove(colour,x+1,y, this, false);
-                if(!hasMoved)
-                    Tablero.spawnValidMove(colour,x+2,y, this, false);
-                break;
-            case 'b':
-                if(x > 1)
-                    Tablero.spawnValidMove(colour,x-1,y, this, false);
-                if(!hasMoved)
-                    Tablero.spawnValidMove(colour,x-2,y, this, false);    
-        }
+        super.crossMovement();
+        super.diagonalMovement();
     }
-
 }
