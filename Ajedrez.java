@@ -21,12 +21,13 @@ public class Ajedrez extends javax.swing.JFrame
      */
     public static java.net.URL glow = Ajedrez.class.getResource("/P2_Chess/sprites/glow.png");
     public static java.net.URL selectedglow = Ajedrez.class.getResource("/P2_Chess/sprites/selectedglow.png");
+    public static java.net.URL enemyglow = Ajedrez.class.getResource("/P2_Chess/sprites/enemyglow2.png");
     
     public Ajedrez()
     {
         initComponents();
         turn.setText("Empiezan las Piezas\nBlancas");
-        layers.setLayer(tablero, JLayeredPane.DEFAULT_LAYER);
+        layers.setLayer(tablero, JLayeredPane.FRAME_CONTENT_LAYER);
         Tablero.spawnPieces();
         
     }
@@ -38,6 +39,12 @@ public class Ajedrez extends javax.swing.JFrame
         for (int i = 0; i < j; i++)
         {
             layers.remove(layers.getComponentsInLayer(JLayeredPane.MODAL_LAYER)[0]);  
+        }
+        
+        int k = layers.getComponentCountInLayer(JLayeredPane.DRAG_LAYER);
+        for (int i = 0; i < k; i++)
+        {
+            layers.remove(layers.getComponentsInLayer(JLayeredPane.DRAG_LAYER)[0]);  
         }
         layers.repaint();
     }

@@ -41,19 +41,6 @@ public class Caballo extends Ficha
         
     }
 
-
-    @Override
-    void eat(Ficha f)
-    {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    void getEaten()
-    {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     @Override
     void showAvailableMoves()
     {
@@ -62,32 +49,70 @@ public class Caballo extends Ficha
         if(x > 2)
         {
             if(y > 1)
-                Tablero.spawnValidMove(colour, x-2, y-1, this, false);
+                if(!Tablero.spawnValidMove(colour, x-2, y-1, this, false, false))
+                {
+                    if(Tablero.checkSpace(x-2, y-1).colour != this.colour )
+                        Tablero.spawnValidMove(colour, x-2, y-1, this, false, true);
+                } 
             if(y < 8)
-                Tablero.spawnValidMove(colour, x-2, y+1, this, false);
+                if(!Tablero.spawnValidMove(colour, x-2, y+1, this, false, false))
+                {
+                    if(Tablero.checkSpace(x-2, y+1).colour != this.colour )
+                        Tablero.spawnValidMove(colour, x-2, y+1, this, false, true);
+                }
         }
         if(x > 1)
         {
             if(y > 2)
-                Tablero.spawnValidMove(colour, x-1, y-2, this, false);
+                if(!Tablero.spawnValidMove(colour, x-1, y-2, this, false, false))
+                {
+                    if(Tablero.checkSpace(x-1, y-2).colour != this.colour )
+                        Tablero.spawnValidMove(colour, x-1, y-2, this, false, true);
+                }
             if(y < 7)
-                Tablero.spawnValidMove(colour, x-1, y+2, this, false);
+                if(!Tablero.spawnValidMove(colour, x-1, y+2, this, false, false))
+                {
+                    if(Tablero.checkSpace(x-1, y+2).colour != this.colour )
+                        Tablero.spawnValidMove(colour, x-1, y+2, this, false, true);
+                }
         }
         
         if(x < 7)
         {
             if(y > 1)
-                Tablero.spawnValidMove(colour, x+2, y-1, this, false);
+                if(!Tablero.spawnValidMove(colour, x+2, y-1, this, false, false))
+                {
+                    if(Tablero.checkSpace(x+2, y-1).colour != this.colour )
+                        Tablero.spawnValidMove(colour, x+2, y-1, this, false, true);
+                }
             if(y < 8)
-                Tablero.spawnValidMove(colour, x+2, y+1, this, false);
+                if(!Tablero.spawnValidMove(colour, x+2, y+1, this, false, false))
+                {
+                    if(Tablero.checkSpace(x+2, y+1).colour != this.colour )
+                        Tablero.spawnValidMove(colour, x+2, y+1, this, false, true);
+                }
         }
         if(x < 8)
         {
           if(y > 2)
-                Tablero.spawnValidMove(colour, x+1, y-2, this, false);
+                if(!Tablero.spawnValidMove(colour, x+1, y-2, this, false, false))
+                {
+                    if(Tablero.checkSpace(x+1, y-2).colour != this.colour )
+                        Tablero.spawnValidMove(colour, x+1, y-2, this, false, true);
+                }
             if(y < 7)
-                Tablero.spawnValidMove(colour, x+1, y+2, this, false);  
+                if(!Tablero.spawnValidMove(colour, x+1, y+2, this, false, false))
+                {
+                    if(Tablero.checkSpace(x+1, y+2).colour != this.colour )
+                        Tablero.spawnValidMove(colour, x+1, y+2, this, false, true);
+                }
         }
+    }
+
+    @Override
+    void seekTargets()
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

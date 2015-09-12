@@ -45,18 +45,6 @@ public class Torre extends Ficha
     }
 
     @Override
-    void eat(Ficha f)
-    {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    void getEaten()
-    {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     void showAvailableMoves()
     {
         super.showAvailableMoves();
@@ -64,6 +52,4 @@ public class Torre extends Ficha
         super.crossMovement();
          
     }
-
-    
 }

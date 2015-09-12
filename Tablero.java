@@ -30,7 +30,7 @@ public class Tablero
         spawnKnights('w',wPieces);
         spawnKnights('b',bPieces);
         
-       spawnBishops('w',wPieces);
+        spawnBishops('w',wPieces);
         spawnBishops('b',bPieces);
         
         spawnKing('w',wPieces);
@@ -137,18 +137,23 @@ public class Tablero
     }
     
     
-    public static boolean spawnValidMove(char c, int x, int y, Ficha parent, boolean isPieceIndicator)
+    public static boolean spawnValidMove(char c, int x, int y, Ficha parent, boolean isPieceIndicator, boolean isTarget)
     {
-        if(checkSpace(x,y) || isPieceIndicator)
+        if(checkSpace(x,y)== null || isPieceIndicator||isTarget)
         {  
             JLabel square = new JLabel();
             
             if(isPieceIndicator)
                 square.setIcon(new ImageIcon(Ajedrez.selectedglow));
+            else if(isTarget)
+                square.setIcon(new ImageIcon(Ajedrez.enemyglow));
             else
                 square.setIcon(new ImageIcon(Ajedrez.glow));
 
             square.setToolTipText(x+":"+y);
+            if(isTarget)
+                square.setText("x");
+            
             square.setSize(new java.awt.Dimension(71,71));
             square.setLocation(PosX.get(x), PosY.get(y));
             square.setVisible(true);
@@ -164,6 +169,8 @@ public class Tablero
 
             layers.add(square);
             layers.setLayer(square, JLayeredPane.MODAL_LAYER);
+            if(isTarget)
+                layers.setLayer(square, JLayeredPane.DRAG_LAYER);
             return true;//se pudo crear? ok, regreso true
         }
         else
@@ -183,13 +190,32 @@ public class Tablero
         Integer x =Integer.parseInt( glow.getToolTipText().split(":")[0]);
         Integer y =Integer.parseInt( glow.getToolTipText().split(":")[1]);
         
+        if( glow.getText().equals("x") )
+        {
+            if(parent instanceof Peon && ((Peon)parent).canEnPassant)
+            {
+                switch(parent.colour)
+                {
+                    case 'w':
+                        checkSpace(x-1,y).getEaten();
+                        break;
+                    case 'b':
+                        checkSpace(x+1,y).getEaten();
+                }
+                
+            }
+            else
+                checkSpace(x,y).getEaten();               
+        }
+
+
         parent.mover( x,y );
         parent.setLocation(glow.getX(),glow.getY());
         changeTurn();
         
     }
     
-    static boolean checkSpace(int x, int y)
+    static Ficha checkSpace(int x, int y)
     {
         Component[] pieces = Ajedrez.layers.getComponentsInLayer(JLayeredPane.POPUP_LAYER);
         
@@ -198,17 +224,10 @@ public class Tablero
             Integer xPos = Integer.parseInt(((Ficha) piece).getToolTipText().split(":")[0]);
             Integer yPos = Integer.parseInt(((Ficha) piece).getToolTipText().split(":")[1]);
             if(xPos == x && yPos == y)
-                return false;//regresa falso si hay algo en x,y
+                return (Ficha)piece;//regresa falso si hay algo en x,y
         }
-        return true;//regresa true si no hay nada en x,y
-    }
-    
-    static boolean canBeEaten(Ficha s, Ficha parent)
-    {
-        return parent.colour != s.colour;
-    }
-    
-    
+        return null;//regresa true si no hay nada en x,y
+    }            
     
     static void changeTurn()
     {
