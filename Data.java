@@ -18,29 +18,26 @@ import java.util.Scanner;
 public class Data {
     
     public static File savefolder = null;
-    public static String folder_dir;
-    
-    public static File savefile = null;
-    public static String file_dir;
-    
+    public static final String ROOT = "usuarios";    
+    public static RandomAccessFile savefile;   
     public static Scanner reader;
-    
-    public static int i=1;
-    
+        
         
     public static void createFolder(){
-            folder_dir = "usuarios";
-            savefolder = new File(folder_dir);
+            savefolder = new File(ROOT);
             savefolder.mkdirs();
     }
     
     public static void createSaveFile() throws FileNotFoundException{ 
 
-            file_dir = folder_dir+"/savefiles";
-            savefile = new File(file_dir);
+            //file_dir = ROOT+"/savefiles.cht";
+            //savefile = new RandomAccessFile(file_dir , "rw");
             try{
-                
-                savefile.createNewFile();    
+                savefile = new RandomAccessFile(ROOT+"/savefiles.cht" , "rw");
+                savefile.seek(savefile.length());
+                savefile.writeUTF("admin");
+                savefile.writeUTF("admin");
+                //savefile.createNewFile();    
                 
             }catch(IOException e){
                 System.out.println(e.getMessage());
@@ -54,22 +51,46 @@ public class Data {
         return newPlayer;                           
     }
     
+    public static boolean playerExist(String u) throws IOException{
+        try(RandomAccessFile raf = new RandomAccessFile(ROOT+"/savefiles.cht", "rw")){
+            raf.seek(0);
+            while(raf.getFilePointer()<raf.length()){
+                String user = raf.readUTF();
+                if(u.equals(user)){
+                    System.out.println("Usuario ya existe");
+                    return false;
+                }
+            }           
+        }catch(IOException e){
+            
+        }
+        return true;
+    }
+    
+    public static boolean passwordValid(String p){
+        if(p.length() == 5){
+            return true;
+        }
+        System.out.println("Password must contain 5 Char!");
+        return false;
+    }
+    
     public static void fileWritter(Jugador newPlayer) throws IOException{                   
-        try(RandomAccessFile raf = new RandomAccessFile(savefile, "rw")){
+        try(RandomAccessFile raf = new RandomAccessFile(ROOT+"/savefiles.cht", "rw")){
             
             raf.seek(raf.length());
             raf.writeUTF(newPlayer.usuario);
             raf.writeUTF(newPlayer.password);
-            //raf.writeInt(newPlayer.puntos);
+            raf.writeInt(newPlayer.puntos);
             
         }catch(IOException e){
             System.out.println(e.getMessage());
         }
     }
-    
-    
+      
     public static boolean login(String u, String p) throws IOException{
-        try(RandomAccessFile raf = new RandomAccessFile(savefile, "r")){ 
+        
+        try(RandomAccessFile raf = new RandomAccessFile(ROOT+"/savefiles.cht", "rw")){ 
 
         raf.seek(0);
         while(raf.getFilePointer() < raf.length()){
@@ -81,7 +102,7 @@ public class Data {
                 System.out.println("Usuario Correcto!");
                 if(p.equals(pass)){
                     System.out.println("Password Correcto!");
-                    raf.seek(pos);
+                    raf.seek(raf.length());
                     return true;
                 }
                 else{
