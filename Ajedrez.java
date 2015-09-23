@@ -50,6 +50,8 @@ public class Ajedrez extends javax.swing.JFrame
     }
     
     
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -64,6 +66,8 @@ public class Ajedrez extends javax.swing.JFrame
         layers = new javax.swing.JLayeredPane();
         tablero = new javax.swing.JLabel();
         turn = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ajedréz");
@@ -92,6 +96,28 @@ public class Ajedrez extends javax.swing.JFrame
         getContentPane().add(turn);
         turn.setBounds(650, 30, 180, 150);
 
+        jButton1.setText("Save");
+        jButton1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(690, 180, 75, 29);
+
+        jButton2.setText("Load");
+        jButton2.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2);
+        jButton2.setBounds(700, 230, 75, 29);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -100,6 +126,17 @@ public class Ajedrez extends javax.swing.JFrame
         cleanGlows();
         Tablero.isMoving = false;
     }//GEN-LAST:event_tableroMousePressed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
+    {//GEN-HEADEREND:event_jButton1ActionPerformed
+        Tablero.saveGame();
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton2ActionPerformed
+    {//GEN-HEADEREND:event_jButton2ActionPerformed
+        Tablero.loadGame();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,6 +185,8 @@ public class Ajedrez extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     public static javax.swing.JLayeredPane layers;
     public static javax.swing.JLabel tablero;
     public static javax.swing.JLabel turn;

@@ -2,6 +2,12 @@ package P2_Chess;
 
 import static P2_Chess.Ajedrez.layers;
 import java.awt.Component;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
@@ -9,17 +15,23 @@ import javax.swing.JLayeredPane;
 
 public class Tablero
 {
-    public static Ficha[] wPieces;
-    public static Ficha[] bPieces;
+    public static ArrayList<Ficha> wPieces;
+    public static ArrayList<Ficha> bPieces;
     public static boolean isMoving = false;
+    
+    static boolean whiteCheck = false;
+    static boolean blackCheck = false;
+    
     public static char turn = 'w';
+    
+    
     
     
     
     static void spawnPieces()
     {
-        wPieces = new Ficha[16];
-        bPieces = new Ficha[16];
+        wPieces = new ArrayList<>();
+        bPieces = new ArrayList<>();
         
         spawnPawns('w',wPieces);
         spawnPawns('b',bPieces);
@@ -46,82 +58,90 @@ public class Tablero
         
     }
     
-    static void spawnPawns(char c, Ficha[] b)
+    static void spawnPawns(char c, ArrayList b)
     {
+        Peon nuevo = null;
         for (int i = 0; i < 8; i++)
         {
             switch(c)
             {
                 case 'w':
-                    b[i] = new Peon(c,2,i+1);
+                    nuevo = new Peon(c,2,i+1);
                     break;
                 case 'b':
-                    b[i] = new Peon(c,7,i+1);
+                    nuevo = new Peon(c,7,i+1);
             }
-            
-            Ajedrez.layers.add(b[i]);
-            Ajedrez.layers.setLayer(b[i], JLayeredPane.POPUP_LAYER);
+            b.add(nuevo);
+            Ajedrez.layers.add(nuevo);
+            Ajedrez.layers.setLayer(nuevo, JLayeredPane.POPUP_LAYER);
             
         }
     }
     
-    static void spawnTowers(char c, Ficha[] b)
+    static void spawnTowers(char c, ArrayList b)
     {
         int x = setColourX(c);
+        Torre nuevo = new Torre(c,x,1);
+        Ajedrez.layers.add(nuevo);
+        Ajedrez.layers.setLayer(nuevo, JLayeredPane.POPUP_LAYER);
+        b.add(nuevo);
         
-        b[8] = new Torre(c,x,1);
-        Ajedrez.layers.add(b[8]);
-        Ajedrez.layers.setLayer(b[8], JLayeredPane.POPUP_LAYER);
-        
-        b[9] = new Torre(c,x,8);
-        Ajedrez.layers.add(b[9]);
-        Ajedrez.layers.setLayer(b[9], JLayeredPane.POPUP_LAYER);
+        Torre nuevo1 = new Torre(c,x,8);
+        Ajedrez.layers.add(nuevo1);
+        Ajedrez.layers.setLayer(nuevo1, JLayeredPane.POPUP_LAYER);
+        b.add(nuevo1);
     }
     
-    static void spawnKnights(char c, Ficha[] b)
+    static void spawnKnights(char c, ArrayList b)
     {   
         int x = setColourX(c);
         
-        b[10] = new Caballo(c,x,2);
-        Ajedrez.layers.add(b[10]);
-        Ajedrez.layers.setLayer(b[10], JLayeredPane.POPUP_LAYER);
+        Caballo nuevo = new Caballo(c,x,2);
+        Ajedrez.layers.add(nuevo);
+        Ajedrez.layers.setLayer(nuevo, JLayeredPane.POPUP_LAYER);
+        b.add(nuevo);
         
-        b[11] = new Caballo(c,x,7);
-        Ajedrez.layers.add(b[11]);
-        Ajedrez.layers.setLayer(b[11], JLayeredPane.POPUP_LAYER);
+        Caballo nuevo1 = new Caballo(c,x,7);
+        Ajedrez.layers.add(nuevo1);
+        Ajedrez.layers.setLayer(nuevo1, JLayeredPane.POPUP_LAYER);
+        b.add(nuevo1);
     }
     
-    static void spawnBishops(char c, Ficha[] b)
+    static void spawnBishops(char c, ArrayList b)
     {
         int x = setColourX(c);
         
-        b[12] = new Alfil(c,x,3);
-        Ajedrez.layers.add(b[12]);
-        Ajedrez.layers.setLayer(b[12], JLayeredPane.POPUP_LAYER);
+        Alfil nuevo = new Alfil(c,x,3);
+        Ajedrez.layers.add(nuevo);
+        Ajedrez.layers.setLayer(nuevo, JLayeredPane.POPUP_LAYER);
+        b.add(nuevo);
         
-        b[13] = new Alfil(c,x,6);
-        Ajedrez.layers.add(b[13]);
-        Ajedrez.layers.setLayer(b[13], JLayeredPane.POPUP_LAYER);
+        Alfil nuevo1 = new Alfil(c,x,6);
+        Ajedrez.layers.add(nuevo1);
+        Ajedrez.layers.setLayer(nuevo1, JLayeredPane.POPUP_LAYER);
+        b.add(nuevo1);
     }
     
-    static void spawnKing(char c, Ficha[] b)
+    static void spawnKing(char c, ArrayList b)
     {
         int x = setColourX(c);
         
-        b[14] = new Rey(c,x,4);
-        Ajedrez.layers.add(b[14]);
-        Ajedrez.layers.setLayer(b[14], JLayeredPane.POPUP_LAYER);
+        Rey nuevo = new Rey(c,x,4);
+        Ajedrez.layers.add(nuevo);
+        Ajedrez.layers.setLayer(nuevo, JLayeredPane.POPUP_LAYER);
+        b.add(nuevo);
         
         
     }
     
-    static void spawnQueen(char c, Ficha[] b)
+    static void spawnQueen(char c, ArrayList b)
     {
         int x = setColourX(c);
         
-        b[15] = new Reina(c,x,5);
-        Ajedrez.layers.add(b[15]);
-        Ajedrez.layers.setLayer(b[15], JLayeredPane.POPUP_LAYER);
+        Reina nueva = new Reina(c,x,5);
+        Ajedrez.layers.add(nueva);
+        Ajedrez.layers.setLayer(nueva, JLayeredPane.POPUP_LAYER);
+        b.add(nueva);
     }
     
     static int setColourX(char c)
@@ -137,15 +157,15 @@ public class Tablero
     }
     
     
-    public static boolean spawnValidMove(char c, int x, int y, Ficha parent, boolean isPieceIndicator, boolean isTarget)
+    public static boolean spawnValidMove(char c, int x, int y, Ficha parent, boolean isPieceIndicator, boolean isTarget, boolean isCheck)
     {
-        if(checkSpace(x,y)== null || isPieceIndicator||isTarget)
+        if(checkSpace(x,y)== null || isPieceIndicator||isTarget||isCheck)
         {  
             JLabel square = new JLabel();
             
             if(isPieceIndicator)
                 square.setIcon(new ImageIcon(Ajedrez.selectedglow));
-            else if(isTarget)
+            else if(isTarget || isCheck)
                 square.setIcon(new ImageIcon(Ajedrez.enemyglow));
             else
                 square.setIcon(new ImageIcon(Ajedrez.glow));
@@ -158,19 +178,24 @@ public class Tablero
             square.setLocation(PosX.get(x), PosY.get(y));
             square.setVisible(true);
 
-            square.addMouseListener(new java.awt.event.MouseAdapter()
+            if(!isCheck)
             {
-                public void mousePressed(java.awt.event.MouseEvent evt)
+                square.addMouseListener(new java.awt.event.MouseAdapter()
                 {
-                    squareMousePressed(evt, parent);
-                }
-            });
+                    public void mousePressed(java.awt.event.MouseEvent evt)
+                    {
+                        squareMousePressed(evt, parent);
+                    }
+                });
+            }
 
 
             layers.add(square);
             layers.setLayer(square, JLayeredPane.MODAL_LAYER);
             if(isTarget)
                 layers.setLayer(square, JLayeredPane.DRAG_LAYER);
+            if(isCheck)
+                layers.setLayer(square, JLayeredPane.DEFAULT_LAYER);
             return true;//se pudo crear? ok, regreso true
         }
         else
@@ -231,6 +256,12 @@ public class Tablero
     
     static void changeTurn()
     {
+        cleanChecks();
+        
+        check4Checks();
+        
+        
+        
         switch(turn)
         {
             case 'w':
@@ -240,8 +271,163 @@ public class Tablero
             case 'b':
                 turn = 'w';
                 Ajedrez.turn.setText("Atacan las Piezas\nBlancas");
+                
+                
         }
     }
+    static void check4Checks()
+    {                        
+        for(Ficha f : wPieces)
+        {
+            if(f != null)
+                f.seekTargets(true);
+        }
+        for(Ficha f : bPieces)
+        {
+            if(f != null)
+                f.seekTargets(true);
+        }    
+        if(!whiteCheck && !blackCheck)
+            Tablero.broadcastCheck('c');
+    }
+    
+    static void broadcastCheck(char kingColor)
+    {
+        
+      switch(kingColor)
+      {
+          case 'w':
+              whiteCheck = true;
+              System.out.println("white king is checking his priviledge!");
+              break;
+          case 'b':
+              blackCheck = true;
+              System.out.println("nigger king is in check n sheit");
+              break;
+          case 'c':
+              whiteCheck = false;
+              blackCheck = false;
+              cleanChecks();
+              
+      }
+    }
+    
+    static void removeEnPassant()
+    {
+        for (int i = 0; i < wPieces.size();i++)
+        {
+            if(wPieces.get(i) instanceof Peon)
+                ((Peon)wPieces.get(i)).removeEnPassant();
+        }
+        
+        for (int i = 0; i < bPieces.size();i++)
+        {
+            if(bPieces.get(i) instanceof Peon)
+                ((Peon)bPieces.get(i)).removeEnPassant();
+        }
+    }
+    
+    static void cleanChecks()
+    {
+        int j = layers.getComponentCountInLayer(JLayeredPane.DEFAULT_LAYER);
+        for (int i = 0; i < j; i++)
+        {
+            layers.remove(layers.getComponentsInLayer(JLayeredPane.DEFAULT_LAYER)[0]);  
+        }
+        layers.repaint();
+    }
+    
+    static void saveGame()
+    {
+        try(FileOutputStream fos = new FileOutputStream("savegame.cht"))
+        {
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            
+            oos.writeChar(turn);
+            oos.writeObject(wPieces);
+            oos.writeObject(bPieces);
+            oos.writeObject(Ajedrez.layers);
+            oos.close();
+            fos.close();
+        }
+        catch(IOException e)
+        {
+            System.out.println("Exception: "+e);
+        }
+    }
+    
+    static void loadGame()
+    {
+       try(FileInputStream fis = new FileInputStream("savegame.cht"))
+        {
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            
+            wPieces.clear();
+            bPieces.clear();
+            for(Component f : layers.getComponentsInLayer(JLayeredPane.POPUP_LAYER))
+            {
+                layers.remove(f);
+            }
+            
+            turn = ois.readChar();
+            switch(turn)
+            {
+                case 'b':
+                    Ajedrez.turn.setText("Atacan las Piezas\nNegras");
+                    break;
+                case 'w':
+                    Ajedrez.turn.setText("Atacan las Piezas\nBlancas");
+            }                                                       
+            
+            wPieces = (ArrayList<Ficha>)ois.readObject();
+            bPieces = (ArrayList<Ficha>)ois.readObject();
+            
+            for (Ficha f : wPieces)
+            {
+                layers.add(f);
+                f.addMouseListener(new java.awt.event.MouseAdapter()
+                {
+                    @Override
+                    public void mousePressed(java.awt.event.MouseEvent evt)
+                    {
+                        f.PieceMousePressed(evt);
+                    }
+                });
+                Ajedrez.layers.setLayer(f, JLayeredPane.POPUP_LAYER);
+            }
+            for(Ficha f : bPieces)
+            {
+                layers.add(f);
+                f.addMouseListener(new java.awt.event.MouseAdapter()
+                {
+                    @Override
+                    public void mousePressed(java.awt.event.MouseEvent evt)
+                    {
+                        f.PieceMousePressed(evt);
+                    }
+                });
+                Ajedrez.layers.setLayer(f, JLayeredPane.POPUP_LAYER);
+            }
+            
+            Ajedrez.layers.repaint();
+            
+            
+            
+            
+        }
+        catch(IOException e)
+        {
+            System.out.println("Exception: "+e);
+            e.printStackTrace();
+        } 
+        catch(ClassNotFoundException e)
+        {
+            System.out.println("El archivo no existe");
+        }
+    }
+
+    
+    
     
     
 }
