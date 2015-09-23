@@ -29,10 +29,10 @@ public class MainMenu extends javax.swing.JFrame {
 
         Proximamente = new javax.swing.JDialog();
         jLabel2 = new javax.swing.JLabel();
-        btnjugar = new javax.swing.JButton();
-        btnreportes = new javax.swing.JButton();
-        btnperfil = new javax.swing.JButton();
-        btnsalir = new javax.swing.JButton();
+        btnJugar = new javax.swing.JButton();
+        btnReportes = new javax.swing.JButton();
+        btnMiPerfil = new javax.swing.JButton();
+        btnCerrarSesion = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         Proximamente.setMinimumSize(new java.awt.Dimension(200, 80));
@@ -59,102 +59,103 @@ public class MainMenu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btnjugar.setText("Jugar");
-        btnjugar.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnJugar.setText("Jugar");
+        btnJugar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnjugarMouseClicked(evt);
+                btnJugarMouseClicked(evt);
             }
         });
-        btnjugar.addActionListener(new java.awt.event.ActionListener() {
+        btnJugar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnjugarActionPerformed(evt);
-            }
-        });
-
-        btnreportes.setText("Reportes");
-        btnreportes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnreportesActionPerformed(evt);
+                btnJugarActionPerformed(evt);
             }
         });
 
-        btnperfil.setText("Mi Perfil");
-        btnperfil.addActionListener(new java.awt.event.ActionListener() {
+        btnReportes.setText("Reportes");
+        btnReportes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnperfilActionPerformed(evt);
+                btnReportesActionPerformed(evt);
             }
         });
 
-        btnsalir.setText("LogOut");
-        btnsalir.addActionListener(new java.awt.event.ActionListener() {
+        btnMiPerfil.setText("Mi Perfil");
+        btnMiPerfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnsalirActionPerformed(evt);
+                btnMiPerfilActionPerformed(evt);
+            }
+        });
+
+        btnCerrarSesion.setText("Cerrar Sesion");
+        btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarSesionActionPerformed(evt);
             }
         });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabel1.setText("Main Menu");
+        jLabel1.setText("Menu Principal");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(160, 160, 160)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(141, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addComponent(btnjugar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnperfil, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnreportes)
-                    .addComponent(btnsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(163, Short.MAX_VALUE))
+                    .addComponent(btnJugar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnMiPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(150, 150, 150))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(21, 21, 21)
                 .addComponent(jLabel1)
-                .addGap(41, 41, 41)
-                .addComponent(btnjugar)
-                .addGap(27, 27, 27)
-                .addComponent(btnreportes)
-                .addGap(26, 26, 26)
-                .addComponent(btnperfil)
-                .addGap(26, 26, 26)
-                .addComponent(btnsalir)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addGap(40, 40, 40)
+                .addComponent(btnJugar)
+                .addGap(18, 18, 18)
+                .addComponent(btnMiPerfil)
+                .addGap(18, 18, 18)
+                .addComponent(btnReportes)
+                .addGap(18, 18, 18)
+                .addComponent(btnCerrarSesion)
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnjugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnjugarActionPerformed
+    private void btnJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJugarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnjugarActionPerformed
+    }//GEN-LAST:event_btnJugarActionPerformed
 
-    private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
+    private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
         new Menu().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_btnsalirActionPerformed
+    }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
-    private void btnperfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnperfilActionPerformed
+    private void btnMiPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMiPerfilActionPerformed
         new MiPerfil().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_btnperfilActionPerformed
+    }//GEN-LAST:event_btnMiPerfilActionPerformed
 
-    private void btnreportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnreportesActionPerformed
-        Proximamente.setVisible(true);
-    }//GEN-LAST:event_btnreportesActionPerformed
+    private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
+        new Reportes().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnReportesActionPerformed
 
-    private void btnjugarMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_btnjugarMouseClicked
-    {//GEN-HEADEREND:event_btnjugarMouseClicked
+    private void btnJugarMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_btnJugarMouseClicked
+    {//GEN-HEADEREND:event_btnJugarMouseClicked
         
         this.setVisible(false);
         Ajedrez juego = new Ajedrez();
         juego.setVisible(true);
         
-    }//GEN-LAST:event_btnjugarMouseClicked
+    }//GEN-LAST:event_btnJugarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -193,10 +194,10 @@ public class MainMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog Proximamente;
-    private javax.swing.JButton btnjugar;
-    private javax.swing.JButton btnperfil;
-    private javax.swing.JButton btnreportes;
-    private javax.swing.JButton btnsalir;
+    private javax.swing.JButton btnCerrarSesion;
+    private javax.swing.JButton btnJugar;
+    private javax.swing.JButton btnMiPerfil;
+    private javax.swing.JButton btnReportes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables

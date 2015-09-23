@@ -33,9 +33,10 @@ public class MiPerfil extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnDatos = new javax.swing.JButton();
         btnUltimosJuegos = new javax.swing.JButton();
-        btncambiarpassword = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnCambiarContraseña = new javax.swing.JButton();
+        btnFacebook = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         datos.setMinimumSize(new java.awt.Dimension(200, 80));
 
@@ -68,75 +69,73 @@ public class MiPerfil extends javax.swing.JFrame {
             }
         });
 
-        btnUltimosJuegos.setText("Ultimos Juegos");
+        btnUltimosJuegos.setText("Mis Ultimos Juegos");
         btnUltimosJuegos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUltimosJuegosActionPerformed(evt);
             }
         });
 
-        btncambiarpassword.setText("Cambiar Password");
-        btncambiarpassword.addActionListener(new java.awt.event.ActionListener() {
+        btnCambiarContraseña.setText("Cambiar Contraseña");
+        btnCambiarContraseña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btncambiarpasswordActionPerformed(evt);
+                btnCambiarContraseñaActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Facebook");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnFacebook.setText("Facebook");
+        btnFacebook.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnFacebookActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Back");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnCancelarActionPerformed(evt);
             }
         });
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Mi Perfil");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(139, Short.MAX_VALUE)
-                .addComponent(btnUltimosJuegos)
-                .addGap(156, 156, 156))
             .addGroup(layout.createSequentialGroup()
+                .addGap(150, 150, 150)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(132, 132, 132)
-                        .addComponent(btncambiarpassword))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(164, 164, 164)
-                        .addComponent(jButton2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(163, 163, 163)
-                        .addComponent(btnDatos)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnDatos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnUltimosJuegos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnFacebook, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCambiarContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE))
+                .addGap(150, 150, 150))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(58, 58, 58)
+                .addGap(26, 26, 26)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
                 .addComponent(btnDatos)
                 .addGap(18, 18, 18)
                 .addComponent(btnUltimosJuegos)
                 .addGap(18, 18, 18)
-                .addComponent(btncambiarpassword)
+                .addComponent(btnCambiarContraseña)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(btnFacebook)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addComponent(btnCancelar)
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatosActionPerformed
@@ -147,18 +146,19 @@ public class MiPerfil extends javax.swing.JFrame {
         datos.setVisible(true);
     }//GEN-LAST:event_btnUltimosJuegosActionPerformed
 
-    private void btncambiarpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncambiarpasswordActionPerformed
-        datos.setVisible(true);
-    }//GEN-LAST:event_btncambiarpasswordActionPerformed
+    private void btnCambiarContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambiarContraseñaActionPerformed
+        new CambiarContraseña().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnCambiarContraseñaActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         new MainMenu().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnFacebookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacebookActionPerformed
         datos.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnFacebookActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,12 +196,13 @@ public class MiPerfil extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCambiarContraseña;
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnDatos;
+    private javax.swing.JButton btnFacebook;
     private javax.swing.JButton btnUltimosJuegos;
-    private javax.swing.JButton btncambiarpassword;
     private javax.swing.JFrame datos;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

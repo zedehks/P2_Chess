@@ -1,4 +1,4 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -16,11 +17,12 @@ import java.util.Scanner;
  * @author Roberto
  */
 public class Data {
-    
+    public Scanner lea = new Scanner(System.in);
     public static File savefolder = null;
     public static final String ROOT = "usuarios";    
     public static RandomAccessFile savefile;   
     public static Scanner reader;
+    public static ArrayList<String> jg = new ArrayList<>();
         
         
     public static void createFolder(){
@@ -30,14 +32,12 @@ public class Data {
     
     public static void createSaveFile() throws FileNotFoundException{ 
 
-            //file_dir = ROOT+"/savefiles.cht";
-            //savefile = new RandomAccessFile(file_dir , "rw");
             try{
                 savefile = new RandomAccessFile(ROOT+"/savefiles.cht" , "rw");
                 savefile.seek(savefile.length());
-                savefile.writeUTF("admin");
-                savefile.writeUTF("admin");
-                //savefile.createNewFile();    
+              //  savefile.writeUTF("admin");
+              //  savefile.writeUTF("admin");
+               // savefile.writeInt(0);   
                 
             }catch(IOException e){
                 System.out.println(e.getMessage());
@@ -52,6 +52,7 @@ public class Data {
     }
     
     public static boolean playerExist(String u) throws IOException{
+        
         try(RandomAccessFile raf = new RandomAccessFile(ROOT+"/savefiles.cht", "rw")){
             raf.seek(0);
             while(raf.getFilePointer()<raf.length()){
@@ -122,10 +123,27 @@ public class Data {
         return false;
     }
     
-    public static void fileReader(Jugador user) throws FileNotFoundException{
+    public static void changePassword(String u, String p, String np)throws IOException{
         
-        
+        try(RandomAccessFile raf = new RandomAccessFile(ROOT+"/savefiles.cht", "rw")){ 
+
+        raf.seek(0);
+        while(raf.getFilePointer() < raf.length()){
+            String user = raf.readUTF();
+            long pos = raf.getFilePointer();
+            String pass = raf.readUTF();
+            if(u.equals(user)){
+                System.out.println("Usuario Correcto!");
+                if(p.equals(pass)){
+                    System.out.println("Password Correcto!");
+                        raf.seek(pos);
+                        raf.writeUTF(np);    
+                    }
+                }
+            }   
+        }
     }
+    
     
          
 }

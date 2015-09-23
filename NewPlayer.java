@@ -17,13 +17,13 @@ public class NewPlayer extends javax.swing.JFrame {
    
     public String u, p;    
     public Jugador newPlayer;
-   // Data.createSaveFile(); 
+    
     
     public NewPlayer(){
         initComponents();        
     }
                
-    public void goToMainMenu(){
+   public void goToMainMenu(){
         new MainMenu().setVisible(true);
         this.dispose();
     }
@@ -43,8 +43,8 @@ public class NewPlayer extends javax.swing.JFrame {
         btnokay = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         txtnewuser = new javax.swing.JTextField();
-        btnnewplayer = new javax.swing.JButton();
-        btnback = new javax.swing.JButton();
+        btnCreaJugador = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtnewpassword = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
@@ -98,30 +98,33 @@ public class NewPlayer extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        txtnewuser.setMinimumSize(new java.awt.Dimension(6, 23));
+        txtnewuser.setPreferredSize(new java.awt.Dimension(6, 23));
         txtnewuser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtnewuserActionPerformed(evt);
             }
         });
 
-        btnnewplayer.setText("Create");
-        btnnewplayer.addActionListener(new java.awt.event.ActionListener() {
+        btnCreaJugador.setText("Crear");
+        btnCreaJugador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnnewplayerActionPerformed(evt);
+                btnCreaJugadorActionPerformed(evt);
             }
         });
 
-        btnback.setText("Back");
-        btnback.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnbackActionPerformed(evt);
+                btnCancelarActionPerformed(evt);
             }
         });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("New Player");
+        jLabel1.setText("Nuevo Jugador");
 
+        txtnewpassword.setPreferredSize(new java.awt.Dimension(6, 23));
         txtnewpassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtnewpasswordActionPerformed(evt);
@@ -134,30 +137,30 @@ public class NewPlayer extends javax.swing.JFrame {
         });
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Username");
+        jLabel3.setText("Usuario");
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Password");
+        jLabel4.setText("Contraseña");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(150, 150, 150)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtnewuser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtnewpassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(150, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnback)
-                .addGap(58, 58, 58)
-                .addComponent(btnnewplayer)
-                .addGap(103, 103, 103))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(145, 145, 145)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtnewuser, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
-                    .addComponent(txtnewpassword)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(144, Short.MAX_VALUE))
+                .addComponent(btnCancelar)
+                .addGap(50, 50, 50)
+                .addComponent(btnCreaJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(101, 101, 101))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,9 +177,9 @@ public class NewPlayer extends javax.swing.JFrame {
                 .addComponent(txtnewpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnnewplayer)
-                    .addComponent(btnback))
-                .addContainerGap(63, Short.MAX_VALUE))
+                    .addComponent(btnCancelar)
+                    .addComponent(btnCreaJugador))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         pack();
@@ -187,30 +190,33 @@ public class NewPlayer extends javax.swing.JFrame {
 
     }//GEN-LAST:event_txtnewuserActionPerformed
 
-    private void btnnewplayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnewplayerActionPerformed
+    private void btnCreaJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreaJugadorActionPerformed
    
         u = txtnewuser.getText();
         p = txtnewpassword.getText();
         
         try{
-            if(Data.passwordValid(p)){
-                if(Data.playerExist(u)){        
+            if(Data.playerExist(u)){
+                if(Data.passwordValid(p)){        
                     newPlayer = Data.createPlayer(u, p);
                     Data.fileWritter(newPlayer);
                     goToMainMenu();
                 }
+                else{
+                    Alert.setVisible(true);                
+                    btnokay.remove(Alert);
+                }
             }
-            Alert.setVisible(true);
-            btnokay.remove(Alert);
+            
         }catch(IOException e){
             System.out.println(e.getMessage());
         }
     
-    }//GEN-LAST:event_btnnewplayerActionPerformed
+    }//GEN-LAST:event_btnCreaJugadorActionPerformed
 
-    private void btnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbackActionPerformed
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         goToMenu();
-    }//GEN-LAST:event_btnbackActionPerformed
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void txtnewpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnewpasswordActionPerformed
         // TODO add your handling code here:
@@ -222,7 +228,7 @@ public class NewPlayer extends javax.swing.JFrame {
 
     private void txtnewpasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnewpasswordKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-
+            btnCreaJugadorActionPerformed(null);
         }
     }//GEN-LAST:event_txtnewpasswordKeyPressed
 
@@ -260,8 +266,8 @@ public class NewPlayer extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog Alert;
-    private javax.swing.JButton btnback;
-    private javax.swing.JButton btnnewplayer;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnCreaJugador;
     private javax.swing.JButton btnokay;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
