@@ -24,6 +24,7 @@ public class Data {
     public static RandomAccessFile savefile;   
     public static Scanner reader;
     static File logs = null; //heheheh, logs
+    public static File reports = null;
     
     public static ArrayList<String> jg = new ArrayList<>();
         
@@ -32,6 +33,7 @@ public class Data {
             savefolder = new File(ROOT);
             savefolder.mkdirs();
             logs = new File(ROOT+"/logs.txt");
+            reports = new File(ROOT+"/reports.cht");
             
     }
     static void writeLog(String log)//logs, jajajaja...
@@ -244,6 +246,22 @@ public class Data {
                     }
                 }
             }   
+        }
+    }
+    
+    public static void whiteganadorReport(Jugador w, Jugador b)throws IOException
+    {
+        try(RandomAccessFile raf = new RandomAccessFile("Reports/savefiles.cht", "rw")){
+            
+            raf.writeUTF(w +" Le ha ganado ah "+b);
+        }
+    }
+    
+    public static void blackganadorReport(Jugador w, Jugador b)throws IOException
+    {
+        try(RandomAccessFile raf = new RandomAccessFile("Reports/savefiles.cht", "rw")){
+            
+            raf.writeUTF(b +" Le ha ganado ah "+w);
         }
     }
     
