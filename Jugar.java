@@ -5,8 +5,6 @@
  */
 package P2_Chess;
 
-import java.io.File;
-
 /**
  *
  * @author Roberto
@@ -18,36 +16,7 @@ public class Jugar extends javax.swing.JFrame {
      */
     public Jugar() {
         initComponents();
-        this.setLocationRelativeTo(null);
-        jDialog1.setLocationRelativeTo(null);
-        jDialog2.setLocationRelativeTo(null);
-        jDialog3.setLocationRelativeTo(null);
-        
-        java.util.ArrayList<Jugador> jugadores = Data.getPlayers();
-        if(jugadores.isEmpty())
-        {
-            System.out.println("Jugar dice que this is empty, no hay players");
-        }
-        
-        for( Jugador f : jugadores )
-        {
-            if (!Data.gameExists(f.usuario))
-            {
-                jButton2.setEnabled(false);
-                jButton3.setEnabled(false);
-            }
-            else
-            {
-                jButton2.setEnabled(true);
-                jButton3.setEnabled(true);
-                break;
-            }
-        }
-       
-        
     }
-    
-        
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -56,358 +25,24 @@ public class Jugar extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
-        jDialog1 = new javax.swing.JDialog();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jDialog2 = new javax.swing.JDialog();
-        jLabel4 = new javax.swing.JLabel();
-        spieler = new javax.swing.JTextField();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jDialog3 = new javax.swing.JDialog();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-
-        jDialog1.setMinimumSize(new java.awt.Dimension(402, 265));
-        jDialog1.setResizable(false);
-        jDialog1.setSize(new java.awt.Dimension(402, 265));
-
-        jButton5.setText("Cargar");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
-        jButton6.setText("Cancelar");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setText("Juegos Guardados");
-
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setText("Ingrese el username de su Oponente:");
-
-        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
-        jDialog1.getContentPane().setLayout(jDialog1Layout);
-        jDialog1Layout.setHorizontalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialog1Layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(jButton6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton5)
-                .addGap(50, 50, 50))
-            .addGroup(jDialog1Layout.createSequentialGroup()
-                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDialog1Layout.createSequentialGroup()
-                        .addGap(139, 139, 139)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jDialog1Layout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(jLabel3)))
-                .addContainerGap(88, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialog1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(141, 141, 141))
-        );
-        jDialog1Layout.setVerticalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialog1Layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addComponent(jLabel2)
-                .addGap(39, 39, 39)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6))
-                .addGap(29, 29, 29))
-        );
-
-        jDialog2.setMinimumSize(new java.awt.Dimension(256, 210));
-        jDialog2.setResizable(false);
-        jDialog2.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel4.setText("Seleccione su oponente:");
-        jDialog2.getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
-
-        spieler.setText("Escrina el usuario");
-        jDialog2.getContentPane().add(spieler, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, -1));
-
-        jButton9.setText("Jugar");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
-            }
-        });
-        jDialog2.getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, -1, -1));
-
-        jButton10.setText("Cancelar");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
-            }
-        });
-        jDialog2.getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
-
-        jDialog3.setResizable(false);
-        jDialog3.setSize(new java.awt.Dimension(402, 200));
-
-        jButton7.setText("Borrar");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-
-        jButton8.setText("Cancelar");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
-
-        jLabel5.setText("Juegos Guardados");
-
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
-
-        jLabel6.setText("Ingrese el username de su Oponente:");
-
-        javax.swing.GroupLayout jDialog3Layout = new javax.swing.GroupLayout(jDialog3.getContentPane());
-        jDialog3.getContentPane().setLayout(jDialog3Layout);
-        jDialog3Layout.setHorizontalGroup(
-            jDialog3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialog3Layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(jButton8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton7)
-                .addGap(50, 50, 50))
-            .addGroup(jDialog3Layout.createSequentialGroup()
-                .addGroup(jDialog3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDialog3Layout.createSequentialGroup()
-                        .addGap(139, 139, 139)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jDialog3Layout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(jLabel6)))
-                .addContainerGap(88, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialog3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5)
-                .addGap(141, 141, 141))
-        );
-        jDialog3Layout.setVerticalGroup(
-            jDialog3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialog3Layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addComponent(jLabel5)
-                .addGap(39, 39, 39)
-                .addComponent(jLabel6)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                .addGroup(jDialog3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton7)
-                    .addComponent(jButton8))
-                .addGap(29, 29, 29))
-        );
+    private void initComponents()
+    {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(400, 300));
-        setResizable(false);
-
-        jLabel1.setText("Jugar");
-
-        jButton1.setText("Partida Nueva");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("Cargar Partida");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jButton3.setText("Eliminar Partida");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        jButton4.setText("Main Menu");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(133, 133, 133)
-                        .addComponent(jButton4))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(171, 171, 171)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2)
-                            .addComponent(jButton1)
-                            .addComponent(jButton3))))
-                .addContainerGap(138, Short.MAX_VALUE))
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jLabel1)
-                .addGap(35, 35, 35)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
-                .addGap(18, 18, 18)
-                .addComponent(jButton3)
-                .addGap(18, 18, 18)
-                .addComponent(jButton4)
-                .addContainerGap())
+            .addGap(0, 300, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton4ActionPerformed
-    {//GEN-HEADEREND:event_jButton4ActionPerformed
-        this.dispose();
-       new MainMenu().setVisible(true);
-        
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
-    {//GEN-HEADEREND:event_jButton1ActionPerformed
-        jDialog2.setVisible(true);
-                
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton2ActionPerformed
-    {//GEN-HEADEREND:event_jButton2ActionPerformed
-           jDialog1.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton5ActionPerformed
-    {//GEN-HEADEREND:event_jButton5ActionPerformed
-        if(Data.gameExists(jTextField1.getText()))
-        {
-            new Ajedrez().setVisible(true);
-            Tablero.loadGame(MainMenu.currentPlayer.usuario, jTextField1.getText());
-            Tablero.bPlayer = Data.getJugador(jTextField1.getText());
-            jDialog1.setVisible(false);
-            this.dispose();
-        }
-        else
-            System.out.println("Juego no existe");
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton3ActionPerformed
-    {//GEN-HEADEREND:event_jButton3ActionPerformed
-       
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton6ActionPerformed
-    {//GEN-HEADEREND:event_jButton6ActionPerformed
-        jDialog1.setVisible(false);// TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton9ActionPerformed
-    {//GEN-HEADEREND:event_jButton9ActionPerformed
-        String jogador = spieler.getText();
-        if(!Data.playerExist(jogador) && !jogador.equals(MainMenu.currentPlayer.usuario))//confuso, pero asi lo hicieron >:[
-        {
-            Tablero.bPlayer = Data.getJugador(jogador);
-            Ajedrez butt = new Ajedrez();
-            butt.setVisible(true);
-            jDialog1.setVisible(false);
-            jDialog2.setVisible(false);
-            this.setVisible(false);
-            this.dispose();
-        }
-    }//GEN-LAST:event_jButton9ActionPerformed
-
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton10ActionPerformed
-    {//GEN-HEADEREND:event_jButton10ActionPerformed
-        this.dispose();
-        new MainMenu().setVisible(true);
-    }//GEN-LAST:event_jButton10ActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jTextField1ActionPerformed
-    {//GEN-HEADEREND:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton7ActionPerformed
-    {//GEN-HEADEREND:event_jButton7ActionPerformed
-        if(Data.gameExists(jTextField2.getText()))
-        {
-            File erase = new File( Data.ROOT+"/"+MainMenu.currentPlayer.usuario+"/vs"+jTextField2.getText()+".cht" );
-            erase.delete();
-            this.dispose();
-            new MainMenu().setVisible(true);
-        }
-        else
-            System.out.println("Juego no existe");
-        
-        
-    }//GEN-LAST:event_jButton7ActionPerformed
-
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton8ActionPerformed
-    {//GEN-HEADEREND:event_jButton8ActionPerformed
-        this.dispose();
-        new MainMenu().setVisible(true);
-    }//GEN-LAST:event_jButton8ActionPerformed
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jTextField2ActionPerformed
-    {//GEN-HEADEREND:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -445,27 +80,5 @@ public class Jugar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JDialog jDialog1;
-    private javax.swing.JDialog jDialog2;
-    private javax.swing.JDialog jDialog3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField spieler;
     // End of variables declaration//GEN-END:variables
 }

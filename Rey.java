@@ -42,13 +42,16 @@ public class Rey extends Ficha
     }
 
     @Override
+    void eat(Ficha f)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
     void getEaten()
     {
-        super.getEaten();
-        Tablero.endGame(this.colour, false);
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
 
     @Override
     void showAvailableMoves()
@@ -56,58 +59,26 @@ public class Rey extends Ficha
         super.showAvailableMoves();
         if(x < 8)
         {
-            if(!Tablero.spawnValidMove(colour, x+1, y, this, false, false,false))
-            {
-                if(Tablero.checkSpace(x+1, y).colour != this.colour )
-                    Tablero.spawnValidMove(colour, x+1, y, this, false, true,false);
-            } 
+            Tablero.spawnValidMove(colour, x+1, y, this, false);
             if(y < 8)
-                if(!Tablero.spawnValidMove(colour, x+1, y+1, this, false, false,false))
-                {
-                    if(Tablero.checkSpace(x+1, y+1).colour != this.colour )
-                        Tablero.spawnValidMove(colour, x+1, y+1, this, false, true,false);
-                } 
+                Tablero.spawnValidMove(colour, x+1, y+1, this, false);
             if(y > 1)
-                if(!Tablero.spawnValidMove(colour, x+1, y-1, this, false, false,false))
-                {
-                    if(Tablero.checkSpace(x+1, y-1).colour != this.colour )
-                        Tablero.spawnValidMove(colour, x+1, y-1, this, false, true,false);
-                } 
+                Tablero.spawnValidMove(colour, x+1, y-1, this, false);
         }
         
         if(x > 1)
         {
-            if(!Tablero.spawnValidMove(colour, x-1, y, this, false, false,false))
-                {
-                    if(Tablero.checkSpace(x-1, y).colour != this.colour )
-                        Tablero.spawnValidMove(colour, x-1, y, this, false, true,false);
-                } 
+            Tablero.spawnValidMove(colour, x-1, y, this, false);
             if (y > 1)
-                if(!Tablero.spawnValidMove(colour, x-1, y-1, this, false, false,false))
-                {
-                    if(Tablero.checkSpace(x-1, y-1).colour != this.colour )
-                        Tablero.spawnValidMove(colour, x-1, y-1, this, false, true,false);
-                } 
+                Tablero.spawnValidMove(colour, x-1, y-1, this, false);
             if(y < 8 )
-                if(!Tablero.spawnValidMove(colour, x-1, y+1, this, false, false,false))
-                {
-                    if(Tablero.checkSpace(x-1, y+1).colour != this.colour )
-                        Tablero.spawnValidMove(colour, x-1, y+1, this, false, true,false);
-                } 
+                Tablero.spawnValidMove(colour, x-1, y+1, this, false);
         }
         
         if(y < 8)
-            if(!Tablero.spawnValidMove(colour, x, y+1, this, false, false,false))
-                {
-                    if(Tablero.checkSpace(x, y+1).colour != this.colour )
-                        Tablero.spawnValidMove(colour, x, y+1, this, false, true,false);
-                } 
+            Tablero.spawnValidMove(colour, x, y+1, this, false);
         if(y > 1)
-            if(!Tablero.spawnValidMove(colour, x, y-1, this, false, false,false))
-                {
-                    if(Tablero.checkSpace(x, y-1).colour != this.colour )
-                        Tablero.spawnValidMove(colour, x, y-1, this, false, true,false);
-                } 
+            Tablero.spawnValidMove(colour, x, y-1, this, false);
         
     }
     

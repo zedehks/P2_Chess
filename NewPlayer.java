@@ -6,7 +6,6 @@
 package P2_Chess;
 
 import java.awt.event.KeyEvent;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -25,11 +24,7 @@ public class NewPlayer extends javax.swing.JFrame {
     }
                
    public void goToMainMenu(){
-       MainMenu.currentPlayer = newPlayer;
-       MainMenu menu =  new MainMenu();
-        menu.setVisible(true);
-        
-        
+        new MainMenu().setVisible(true);
         this.dispose();
     }
     
@@ -204,7 +199,6 @@ public class NewPlayer extends javax.swing.JFrame {
             if(Data.playerExist(u)){
                 if(Data.passwordValid(p)){        
                     newPlayer = Data.createPlayer(u, p);
-                    
                     Data.fileWritter(newPlayer);
                     goToMainMenu();
                 }
