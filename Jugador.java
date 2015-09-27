@@ -21,6 +21,21 @@ public class Jugador {
         puntos = 0;
         isLoggedIn = false;
         
-    }  
+    } 
+    
+    public Jugador(String usuario, int puntos, boolean isLoggedIn)
+    {
+        this.usuario = usuario;
+        this.puntos = puntos;
+        this.isLoggedIn = isLoggedIn;
+    }
+    
+    public Jugador(String usuario,String pass, int puntos)
+    {
+        this.usuario = usuario;
+        password = pass;
+        this.puntos = puntos;
+        //this.isLoggedIn = true;
+    }
     
 }

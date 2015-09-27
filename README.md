@@ -2,13 +2,12 @@
 Proyecto final para Programación II
 
 Current Mission Objectives:
-- Create the file management system (i.e. copy everything from "Battleship")
-- Move game logic away from nasty JLabels and convert to sweet, dank classes and objects
-- Finish by September 28 holy shit titty fuck
-- Almost forgot: create more subfolders and organize files in them; so many files in a single folder trigger me so hard dam son.
-- ...
-- make more dank memes
+ - Terminar el perfil (cambio de clave, juegos jugados etc) (menos el facebook) (fuck that shit)
+ - Terminar el "reportes"
+ - transferir partida
+ - arreglar los bugs
 
 
-Mission Parameters:
-- dONT upload anything in the master god dam just branch the damn thing 
+Current Issues:
+ - en ciertas situaciones, ciertos jugadores dejan de ser utilizables. No he podido replicar consistentemente el bug, pero tiene que ver con ganar el juego.
+

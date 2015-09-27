@@ -5,10 +5,15 @@
  */
 package P2_Chess;
  
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JLayeredPane;
 
 public class Peon extends Ficha
 {
+    boolean enPassantEatable;
+    boolean canEnPassant;
+    
     public Peon(char colour, int x, int y)
     {
         super();
@@ -29,6 +34,8 @@ public class Peon extends Ficha
         
         hasMoved = false;
         isDed = false;
+        enPassantEatable = false;
+        canEnPassant = false;
         
         this.setToolTipText(x+":"+y);
         this.setVisible(true);
@@ -37,39 +44,120 @@ public class Peon extends Ficha
         
     }
 
-
-
     @Override
-    public void eat(Ficha f)
+    void mover(int x, int y)
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(enPassantEatable)
+            enPassantEatable = false;        
+        
+        if(!hasMoved)
+           enPassantEatable = true;  
+        
+        super.mover(x, y);
+        
+        int pawnColor=0;
+        switch(colour)
+        {
+            case 'w':
+                pawnColor = 8;
+                break;
+            case 'b':
+                pawnColor = 1;
+        }
+        
+        if(this.x == pawnColor)
+            crownMe();
     }
-
-    @Override
-    public void getEaten()
-    {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
+    
 
     @Override
     public void showAvailableMoves()
     {
         super.showAvailableMoves();
-        
+        seekTargets(false);
         switch(colour)
         {
             case 'w':
                 if(x < 8)
-                    Tablero.spawnValidMove(colour,x+1,y, this, false);
-                if(!hasMoved)
-                    Tablero.spawnValidMove(colour,x+2,y, this, false);
+                    Tablero.spawnValidMove(colour,x+1,y, this, false, false,false);
+                if(!hasMoved && Tablero.checkSpace(x+2, y) == null && Tablero.checkSpace(x+1 ,y) == null)
+                    Tablero.spawnValidMove(colour,x+2,y, this, false, false,false);
                 break;
             case 'b':
                 if(x > 1)
-                    Tablero.spawnValidMove(colour,x-1,y, this, false);
-                if(!hasMoved)
-                    Tablero.spawnValidMove(colour,x-2,y, this, false);    
+                    Tablero.spawnValidMove(colour,x-1,y, this, false, false,false);
+                if(!hasMoved && Tablero.checkSpace(x-2, y) == null && Tablero.checkSpace(x-1 ,y) == null)
+                    Tablero.spawnValidMove(colour,x-2,y, this, false, false,false);    
         }
+    }
+    
+    @Override
+    void seekTargets(boolean isChecking4Checkmate)
+    {
+        Ficha target;
+        int pawnColor = 0;
+        switch(colour)
+        {
+            case 'w':
+                pawnColor = x+1;
+                break;
+            case 'b':
+                pawnColor = x-1;
+        }
+        
+        if(!isChecking4Checkmate)
+        {
+            if(Tablero.checkSpace(pawnColor, y+1) != null && Tablero.checkSpace(pawnColor, y+1).colour != this.colour )
+                Tablero.spawnValidMove(colour, pawnColor, y+1, this, false, true,false);
+            if(Tablero.checkSpace(pawnColor, y-1) != null && Tablero.checkSpace(pawnColor, y-1).colour != this.colour)
+                Tablero.spawnValidMove(colour, pawnColor, y-1, this, false, true,false);
+            
+            
+            //en passant
+            if(Tablero.checkSpace(x, y+1) instanceof Peon && Tablero.checkSpace(x, y+1).colour != this.colour && ((Peon)Tablero.checkSpace(x,y+1)).enPassantEatable)
+            {
+                Tablero.spawnValidMove(colour, pawnColor, y+1, this, false, true,false);
+                canEnPassant = true;
+            }
+            if(Tablero.checkSpace(x, y-1) instanceof Peon && Tablero.checkSpace(x, y-1).colour != this.colour && ((Peon)Tablero.checkSpace(x,y-1)).enPassantEatable)
+            {
+                Tablero.spawnValidMove(colour, pawnColor, y-1, this, false, true,false);
+                canEnPassant =  true;
+            }
+        }
+        else
+        {
+            target = Tablero.checkSpace(pawnColor, y+1);
+            check4Check(target);
+            target = Tablero.checkSpace(pawnColor, y-1);
+            check4Check(target);
+        }
+
+    }
+    
+    void removeEnPassant()
+    {
+        if(canEnPassant)
+            canEnPassant = false;
+    }
+    
+    void crownMe()
+    {
+        ArrayList a = null;
+        switch(colour)
+        {
+            case 'w':
+                a = Tablero.wPieces;
+                break;
+            case 'b':
+                a = Tablero.bPieces;
+        }
+        Reina nueva = new Reina(this.colour,this.x,this.y);
+        Ajedrez.layers.add(nueva);
+        Ajedrez.layers.setLayer(nueva, JLayeredPane.POPUP_LAYER);
+        a.add(nueva);
+        this.getEaten();
     }
 
 }
