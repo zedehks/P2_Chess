@@ -141,12 +141,21 @@ public class Login extends javax.swing.JFrame {
         try{
             
             if(Data.login(u, p)){
-                new MainMenu().setVisible(true);
-                this.dispose();
+                
+                MainMenu.currentPlayer = Data.getJugador(u);
+                
+                
+                
+                if(MainMenu.currentPlayer != null)
+                {
+                    MainMenu butt = new MainMenu();
+                    this.dispose();
+                    butt.setVisible(true);
+                }
             }
                     
         }catch(IOException e){
-            System.out.println(e.getMessage());
+           e.printStackTrace();
         }
                
     }//GEN-LAST:event_btnIniciarSesionActionPerformed

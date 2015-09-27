@@ -45,7 +45,7 @@ public class Rey extends Ficha
     void getEaten()
     {
         super.getEaten();
-        
+        Tablero.endGame(this.colour, false);
     }
     
     

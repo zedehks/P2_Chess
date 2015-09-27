@@ -63,7 +63,7 @@ public abstract class Ficha extends JLabel implements Serializable
     }
     void PieceMousePressed(java.awt.event.MouseEvent evt)
     {
-        System.out.println("click");
+        //System.out.println("click");
         if(Tablero.turn == this.colour)
         {
             if(Tablero.isMoving )
@@ -217,8 +217,7 @@ public abstract class Ficha extends JLabel implements Serializable
             seekCross();
             seekDiagonal();
         }
-        else
-            System.out.println("IDk");
+        
             
     }
     

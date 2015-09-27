@@ -24,6 +24,9 @@ public class Tablero
     
     public static char turn = 'w';
     
+    public static Jugador wPlayer = MainMenu.currentPlayer;
+    public static Jugador bPlayer;
+    
     
     
     
@@ -267,11 +270,12 @@ public class Tablero
             case 'w':
                 turn = 'b';
                 Ajedrez.turn.setText("Atacan las Piezas\nNegras");
+                Ajedrez.save.setEnabled(false);
                 break;
             case 'b':
                 turn = 'w';
                 Ajedrez.turn.setText("Atacan las Piezas\nBlancas");
-                
+                Ajedrez.save.setEnabled(true);
                 
         }
     }
@@ -298,11 +302,11 @@ public class Tablero
       {
           case 'w':
               whiteCheck = true;
-              System.out.println("white king is checking his priviledge!");
+              
               break;
           case 'b':
               blackCheck = true;
-              System.out.println("nigger king is in check n sheit");
+              
               break;
           case 'c':
               whiteCheck = false;
@@ -339,7 +343,7 @@ public class Tablero
     
     static void saveGame()
     {
-        try(FileOutputStream fos = new FileOutputStream("savegame.cht"))
+        try(FileOutputStream fos = new FileOutputStream(Data.ROOT+"/"+wPlayer.usuario+"/vs"+bPlayer.usuario+".cht") )
         {
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             
@@ -356,14 +360,14 @@ public class Tablero
         }
     }
     
-    static void loadGame()
+    static void loadGame(String user, String oponente)
     {
-       try(FileInputStream fis = new FileInputStream("savegame.cht"))
+       try(FileInputStream fis = new FileInputStream(Data.ROOT+"/"+user+"/vs"+oponente+".cht"))
         {
             ObjectInputStream ois = new ObjectInputStream(fis);
             
-            wPieces.clear();
-            bPieces.clear();
+            //wPieces.clear();
+            //bPieces.clear();
             for(Component f : layers.getComponentsInLayer(JLayeredPane.POPUP_LAYER))
             {
                 layers.remove(f);
@@ -424,10 +428,58 @@ public class Tablero
         {
             System.out.println("El archivo no existe");
         }
+        catch(NullPointerException e)
+        {}
     }
 
+    static void endGame(char loser, boolean retiro)
+    {
+        switch(loser)
+        {
+            case 'b':
+                wPlayer.puntos += 3;
+                try
+                {
+                    Data.fileWriter(wPlayer);
+                    Data.writeLog( "\n"+genWinMsg(wPlayer,bPlayer,retiro));
+                    Ajedrez.finish();
+                }
+                catch(IOException e)
+                {}
+
+                break;
+            case 'w':
+                bPlayer.puntos += 3;
+                try
+                {
+                    Data.fileWriter(bPlayer);
+                    Data.writeLog( "\n"+genWinMsg(bPlayer,wPlayer,retiro));
+                    Ajedrez.finish();
+                }
+                catch(IOException e)
+                {}
+
+        }
+    }
     
-    
+    static void retirar()
+    {
+        endGame(turn,true);
+    }
+       /** 
+        * Laziness extreme!
+        * @param winner Pretty self-explanatory kek
+        * @param loser Same here jej
+        * @param retiro ¿Terminó el juego por retiro o muerte?
+        * @return El mensajito listo para grabar
+        */
+    public static String genWinMsg(Jugador winner, Jugador loser, boolean retiro)
+    {
+        if(retiro)
+            return loser.usuario+" se ha retirado, dejando a "+winner.usuario+" como ganador.\n";
+        else
+            return winner.usuario+" ha vencido a "+loser.usuario+".\n"; 
+    }
     
     
 }
