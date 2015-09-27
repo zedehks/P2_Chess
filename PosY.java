@@ -11,9 +11,9 @@ import java.util.Hashtable;
  *
  * @author waldonavas
  */
-public final class PosY
+public class PosY
 {
-    private final static Hashtable<Integer,Integer> ypos = new Hashtable<>(); 
+    private static Hashtable<Integer,Integer> ypos = new Hashtable<>(); 
     
     private static void setValues()
     {

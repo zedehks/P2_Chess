@@ -5,7 +5,7 @@
  */
 package P2_Chess;
 
-import java.io.File;
+import java.util.ArrayList;
 
 /**
  *
@@ -17,11 +17,6 @@ public class MiPerfil extends javax.swing.JFrame {
     //Funciones
     public MiPerfil() {
         initComponents();
-        File game = new File(Data.ROOT+"/"+MainMenu.currentPlayer.usuario);
-        
-        jTextPane1.setText("Username: "+MainMenu.currentPlayer.usuario
-                          +"\nPuntos: "+MainMenu.currentPlayer.puntos
-                          +"\nJuegos Guardados: "+game.listFiles().length);
     }
 
     
@@ -35,10 +30,7 @@ public class MiPerfil extends javax.swing.JFrame {
     private void initComponents() {
 
         datos = new javax.swing.JFrame();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
-        jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         btnDatos = new javax.swing.JButton();
         btnUltimosJuegos = new javax.swing.JButton();
         btnCambiarContraseña = new javax.swing.JButton();
@@ -46,51 +38,26 @@ public class MiPerfil extends javax.swing.JFrame {
         btnCancelar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
-        datos.setMinimumSize(new java.awt.Dimension(421, 299));
-        datos.setPreferredSize(new java.awt.Dimension(421, 299));
-        datos.setResizable(false);
-        datos.setSize(new java.awt.Dimension(421, 299));
+        datos.setMinimumSize(new java.awt.Dimension(200, 80));
 
-        jTextPane1.setEditable(false);
-        jTextPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jScrollPane1.setViewportView(jTextPane1);
-
-        jLabel3.setText("Datos");
-
-        jButton1.setText("Ok");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel1.setText("Proximamente!");
 
         javax.swing.GroupLayout datosLayout = new javax.swing.GroupLayout(datos.getContentPane());
         datos.getContentPane().setLayout(datosLayout);
         datosLayout.setHorizontalGroup(
             datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(datosLayout.createSequentialGroup()
-                .addGroup(datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(datosLayout.createSequentialGroup()
-                        .addGap(94, 94, 94)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(datosLayout.createSequentialGroup()
-                        .addGap(193, 193, 193)
-                        .addComponent(jLabel3))
-                    .addGroup(datosLayout.createSequentialGroup()
-                        .addGap(185, 185, 185)
-                        .addComponent(jButton1)))
-                .addContainerGap(97, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, datosLayout.createSequentialGroup()
+                .addContainerGap(44, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(40, 40, 40))
         );
         datosLayout.setVerticalGroup(
             datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(datosLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap(59, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, datosLayout.createSequentialGroup()
+                .addContainerGap(27, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(26, 26, 26))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -146,7 +113,7 @@ public class MiPerfil extends javax.swing.JFrame {
                     .addComponent(btnDatos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnUltimosJuegos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnFacebook, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCambiarContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(btnCambiarContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE))
                 .addGap(150, 150, 150))
         );
         layout.setVerticalGroup(
@@ -193,12 +160,6 @@ public class MiPerfil extends javax.swing.JFrame {
         datos.setVisible(true);
     }//GEN-LAST:event_btnFacebookActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
-    {//GEN-HEADEREND:event_jButton1ActionPerformed
-       datos.setVisible(false);
-    
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -241,10 +202,7 @@ public class MiPerfil extends javax.swing.JFrame {
     private javax.swing.JButton btnFacebook;
     private javax.swing.JButton btnUltimosJuegos;
     private javax.swing.JFrame datos;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextPane jTextPane1;
     // End of variables declaration//GEN-END:variables
 }

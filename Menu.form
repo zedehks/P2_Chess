@@ -29,8 +29,8 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btncrearjugador" max="32767" attributes="0"/>
+                  <Component id="jLabel1" alignment="0" pref="110" max="32767" attributes="0"/>
+                  <Component id="btncrearjugador" pref="110" max="32767" attributes="0"/>
                   <Component id="btnlogin" alignment="0" max="32767" attributes="0"/>
                   <Component id="btnsalir" max="32767" attributes="0"/>
               </Group>

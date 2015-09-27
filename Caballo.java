@@ -41,6 +41,19 @@ public class Caballo extends Ficha
         
     }
 
+
+    @Override
+    void eat(Ficha f)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    void getEaten()
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     @Override
     void showAvailableMoves()
     {
@@ -49,126 +62,32 @@ public class Caballo extends Ficha
         if(x > 2)
         {
             if(y > 1)
-                if(!Tablero.spawnValidMove(colour, x-2, y-1, this, false, false,false))
-                {
-                    if(Tablero.checkSpace(x-2, y-1).colour != this.colour )
-                        Tablero.spawnValidMove(colour, x-2, y-1, this, false, true,false);
-                } 
+                Tablero.spawnValidMove(colour, x-2, y-1, this, false);
             if(y < 8)
-                if(!Tablero.spawnValidMove(colour, x-2, y+1, this, false, false,false))
-                {
-                    if(Tablero.checkSpace(x-2, y+1).colour != this.colour )
-                        Tablero.spawnValidMove(colour, x-2, y+1, this, false, true,false);
-                }
+                Tablero.spawnValidMove(colour, x-2, y+1, this, false);
         }
         if(x > 1)
         {
             if(y > 2)
-                if(!Tablero.spawnValidMove(colour, x-1, y-2, this, false, false,false))
-                {
-                    if(Tablero.checkSpace(x-1, y-2).colour != this.colour )
-                        Tablero.spawnValidMove(colour, x-1, y-2, this, false, true,false);
-                }
+                Tablero.spawnValidMove(colour, x-1, y-2, this, false);
             if(y < 7)
-                if(!Tablero.spawnValidMove(colour, x-1, y+2, this, false, false,false))
-                {
-                    if(Tablero.checkSpace(x-1, y+2).colour != this.colour )
-                        Tablero.spawnValidMove(colour, x-1, y+2, this, false, true,false);
-                }
+                Tablero.spawnValidMove(colour, x-1, y+2, this, false);
         }
         
         if(x < 7)
         {
             if(y > 1)
-                if(!Tablero.spawnValidMove(colour, x+2, y-1, this, false, false,false))
-                {
-                    if(Tablero.checkSpace(x+2, y-1).colour != this.colour )
-                        Tablero.spawnValidMove(colour, x+2, y-1, this, false, true,false);
-                }
+                Tablero.spawnValidMove(colour, x+2, y-1, this, false);
             if(y < 8)
-                if(!Tablero.spawnValidMove(colour, x+2, y+1, this, false, false,false))
-                {
-                    if(Tablero.checkSpace(x+2, y+1).colour != this.colour )
-                        Tablero.spawnValidMove(colour, x+2, y+1, this, false, true,false);
-                }
+                Tablero.spawnValidMove(colour, x+2, y+1, this, false);
         }
         if(x < 8)
         {
           if(y > 2)
-                if(!Tablero.spawnValidMove(colour, x+1, y-2, this, false, false,false))
-                {
-                    if(Tablero.checkSpace(x+1, y-2).colour != this.colour )
-                        Tablero.spawnValidMove(colour, x+1, y-2, this, false, true,false);
-                }
+                Tablero.spawnValidMove(colour, x+1, y-2, this, false);
             if(y < 7)
-                if(!Tablero.spawnValidMove(colour, x+1, y+2, this, false, false,false))
-                {
-                    if(Tablero.checkSpace(x+1, y+2).colour != this.colour )
-                        Tablero.spawnValidMove(colour, x+1, y+2, this, false, true,false);
-                }
+                Tablero.spawnValidMove(colour, x+1, y+2, this, false);  
         }
     }
-
-    @Override
-    void seekTargets(boolean thisGuyDoesntUseThisBooleanLol)
-    {
-        Ficha target;
-        if(x > 2)
-        {
-            if(y > 1)
-            {    
-                target = Tablero.checkSpace(x-2, y-1);
-                check4Check(target);
-            }
-            if(y < 8)
-            {
-                target = Tablero.checkSpace(x-2, y+1);
-                check4Check(target);
-            }
-        }
-        if(x > 1)
-        {
-            if(y > 2)
-            {
-                target = Tablero.checkSpace(x-1, y-2);
-                check4Check(target);
-            }
-            if(y < 7)
-            {
-                target = Tablero.checkSpace(x-1, y+2);
-                check4Check(target);
-            }
-        }
-        
-        if(x < 7)
-        {
-            if(y > 1)
-            {
-                target = Tablero.checkSpace(x+2, y-1);
-                check4Check(target);
-            }
-            if(y < 8)
-            {
-                target = Tablero.checkSpace(x+2, y+1);
-                check4Check(target);
-            }
-        }
-        if(x < 8)
-        {
-          if(y > 2)
-          {
-                target = Tablero.checkSpace(x+1, y-2);
-                check4Check(target);
-          }
-            if(y < 7)
-            {
-                target = Tablero.checkSpace(x+1, y+2);
-                check4Check(target);
-            }
-        }
-    }
-    
-   
-    
     
 }

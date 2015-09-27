@@ -11,9 +11,9 @@ import java.util.Hashtable;
  *
  * @author waldonavas
  */
-public final class PosX
+public class PosX
 {
-    private final static Hashtable<Integer,Integer> xpos = new Hashtable<>();
+    private static Hashtable<Integer,Integer> xpos = new Hashtable<>();
 
     private static void setValues()
     {
