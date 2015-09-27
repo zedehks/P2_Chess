@@ -5,6 +5,8 @@
  */
 package P2_Chess;
 
+import java.io.IOException;
+
 /**
  *
  * @author Roberto
@@ -46,6 +48,11 @@ public class Reportes extends javax.swing.JFrame {
         });
 
         btnUltimosJuegos.setText("Ultimos Juegos ");
+        btnUltimosJuegos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUltimosJuegosActionPerformed(evt);
+            }
+        });
 
         btnAtras.setText("Atras");
         btnAtras.addActionListener(new java.awt.event.ActionListener() {
@@ -94,6 +101,11 @@ public class Reportes extends javax.swing.JFrame {
         new MainMenu().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnAtrasActionPerformed
+
+    private void btnUltimosJuegosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUltimosJuegosActionPerformed
+        new UltimosJuegos().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnUltimosJuegosActionPerformed
 
     /**
      * @param args the command line arguments

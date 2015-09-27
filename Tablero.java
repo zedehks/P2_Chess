@@ -442,6 +442,7 @@ public class Tablero
                 {
                     Data.fileWriter(wPlayer);
                     Data.writeLog( "\n"+genWinMsg(wPlayer,bPlayer,retiro));
+                    Data.whiteganadorReport(wPlayer, bPlayer);
                     Ajedrez.finish();
                 }
                 catch(IOException e)
@@ -454,6 +455,7 @@ public class Tablero
                 {
                     Data.fileWriter(bPlayer);
                     Data.writeLog( "\n"+genWinMsg(bPlayer,wPlayer,retiro));
+                    Data.blackganadorReport(bPlayer, wPlayer);
                     Ajedrez.finish();
                 }
                 catch(IOException e)
